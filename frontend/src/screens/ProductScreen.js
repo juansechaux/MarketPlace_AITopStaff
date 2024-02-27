@@ -7,7 +7,7 @@ import Loader from '../components/Loader';
 import Message from '../components/Message';
 import { listProductDetails } from '../actions/productActions'
 
-function ProductScreen() {
+function ProductScreen({ match }) {
     const dispatch = useDispatch()
     const productDetails = useSelector(state => state.productDetails)
     const { loading, error, product } = productDetails
@@ -16,7 +16,7 @@ function ProductScreen() {
 
     useEffect(()=>{
         dispatch(listProductDetails(id))
-    }, [dispatch])
+    }, [dispatch, match])
 
 
   return (
@@ -85,7 +85,6 @@ function ProductScreen() {
                 </Row>
             )
       }
-      {product.name}
     </div>
   );
 }
