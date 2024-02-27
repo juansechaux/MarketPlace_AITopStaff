@@ -10,7 +10,6 @@ import { listProductDetails } from '../actions/productActions'
 function ProductScreen({ match }) {
     const history = useNavigate();
     const { id } = useParams();
-    console.log(history)
     const [qty, setQty] = useState(1)
 
 
