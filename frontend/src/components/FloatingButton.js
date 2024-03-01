@@ -5,7 +5,7 @@ import './FloatingButton.js'; // Estilos CSS para el botón flotante
 function FloatingButton() {
   return (
     <div className="position-fixed bottom-0 end-0 p-3">
-      <Link to="https://lidarit.com/" className="btn btn-secondary rounded-pill">Create your AITopStaff</Link>
+      <Link to="https://lidarit.com/" className="btn btn-secondary rounded-pill bg-secondary">Create your AITopStaff</Link>
     </div>
   );
 }

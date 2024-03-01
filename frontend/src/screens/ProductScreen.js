@@ -33,7 +33,12 @@ function ProductScreen({ match }) {
             : (
                 <Row>
                     <Col md={6}>
-                        <Image src={product.image} alt={product.name} fluid />
+                        <Image
+                            src={product.image}
+                            alt={product.name}
+                            style={{ width: '700px', height: '500px', objectFit: 'cover'}}
+                            fluid
+                            />
                     </Col>
 
                     <Col md={3}>
