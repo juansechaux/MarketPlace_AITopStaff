@@ -33,12 +33,19 @@ function ProductScreen({ match }) {
             : (
                 <Row>
                     <Col md={6}>
-                        <Image
-                            src={product.image}
-                            alt={product.name}
-                            style={{ width: '700px', height: '500px', objectFit: 'cover'}}
-                            fluid
-                            />
+                        <Link to={product.short_description}>
+                        <div style={{ position: 'relative' }}>
+                            <Image
+                                src={product.image}
+                                alt={product.name}
+                                style={{ width: '700px', height: '500px', objectFit: 'cover'}}
+                                fluid
+                                />
+                            <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', textAlign: 'center' }}>
+                                <h3 style={{ color: 'white', fontSize: '24px', textShadow: '2px 2px 4px #000000' }}>Try me</h3>
+                            </div>
+                        </div>
+                        </Link>
                     </Col>
 
                     <Col md={3}>
