@@ -28,7 +28,7 @@ function CartScreen({ match }) {
   }
 
   const checkoutHandler = () =>{
-    history('/login?redirect=shipping')
+    history('/login?redirect=/shipping')
   }
 
   return (
