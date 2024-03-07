@@ -68,7 +68,7 @@ class OrderSerializers(serializers.ModelSerializer):
     
     def get_shippingAddress(self, obj):
         try:
-            address = ShippingAddressSerializers(obj.shippingAddress, many=False)
+            address = ShippingAddressSerializers(obj.shippingaddress, many=False).data
         except:
             address = False
         return address

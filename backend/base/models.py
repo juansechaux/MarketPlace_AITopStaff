@@ -8,6 +8,7 @@ class Product(models.Model):
     name = models.CharField(max_length=200, null=True, blank=True)
     image = models.ImageField(null=True, blank=True)
     short_description = models.CharField(max_length=200, null=True, blank=True) # Anteriormente campo brand
+    ai_bot_url = models.CharField(max_length=200, null=True, blank=True) # Nuevo campo
     category = models.CharField(max_length=200, null=True, blank=True)
     description = models.TextField(null=True, blank=True)
     rating = models.DecimalField(max_digits=7, decimal_places=2, null=True, blank=True)
