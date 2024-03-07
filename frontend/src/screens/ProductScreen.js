@@ -33,7 +33,8 @@ function ProductScreen({ match }) {
             : (
                 <Row>
                     <Col md={6}>
-                        <Link to={product.short_description}>
+                        <iframe src={product.ai_bot_url} width='100%' height='400px' allow='microphone' allowFullScreen> 
+                        {/* <Link to={product.short_description}> */}
                         <div style={{ position: 'relative' }}>
                             <Image
                                 src={product.image}
@@ -45,31 +46,32 @@ function ProductScreen({ match }) {
                                 <h3 style={{ color: 'white', fontSize: '24px', textShadow: '2px 2px 4px #000000' }}>Try me</h3>
                             </div>
                         </div>
-                        </Link>
+                        {/* </Link> */}
+                        </iframe>
                     </Col>
 
-                    <Col md={3}>
+                    <Col md={6}>
                         <ListGroup variant='flush'>
                             <ListGroup.Item>
                                 <h3>{product.name}</h3>
                             </ListGroup.Item>
 
-                            <ListGroup.Item>
+                            {/* <ListGroup.Item>
                                 <Rating value={product.rating} text={`${product.numReviews} reviews`} color={'#f8e825'} />
-                            </ListGroup.Item>
+                            </ListGroup.Item> */}
 
-                            <ListGroup.Item>
+                            {/* <ListGroup.Item>
                                 Price: ${product.price}
-                            </ListGroup.Item>
+                            </ListGroup.Item> */}
 
-                            <ListGroup.Item>
+                            <ListGroup.Item style={{ textAlign: 'justify' }}>
                                 Description: {product.description}
                             </ListGroup.Item>
                         </ListGroup>
 
                     </Col>
 
-                    <Col md={3}>
+                    {/* <Col md={3}>
                     <Card>
                         <ListGroup variant='flush'>
                             <ListGroup.Item>
@@ -122,7 +124,7 @@ function ProductScreen({ match }) {
                             </ListGroup.Item>
                         </ListGroup>
                     </Card>
-                    </Col>
+                    </Col> */}
                 </Row>
             )
       }
