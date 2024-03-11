@@ -20,7 +20,7 @@ def getProduct(request, pk):
     serialaizer = ProductSerializers(product, many=False)
     return Response(serialaizer.data)
 
-@api_view(['GET'])
+@api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def createProductReview(request, pk):
     user = request.user
@@ -55,7 +55,8 @@ def createProductReview(request, pk):
         total = 0
         for i in reviews:
             total += i.rating
-            product.rating = total / len(reviews)
+
+        product.rating = total / len(reviews)
         product.save()
 
         return Response('Review Added')
