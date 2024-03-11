@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from django.contrib.auth.models import User
 from rest_framework_simplejwt.tokens import RefreshToken
-from .models import Product, Order, OrderItem, ShippingAddress
+from .models import Product, Order, OrderItem, ShippingAddress, Review
 
 class UserSerializers(serializers.ModelSerializer):
     name = serializers.SerializerMethodField(read_only=True)
@@ -37,10 +37,23 @@ class UserSerializerWithToken(UserSerializers):
         return str(token.access_token)
 
 
+class ReviewSerializers(serializers.ModelSerializer):
+    class Meta:
+        model = Review
+        fields = '__all__'
+
+
 class ProductSerializers(serializers.ModelSerializer):
+    reviews = serializers.SerializerMethodField(read_only=True)
+
     class Meta:
         model = Product
         fields = '__all__'
+
+    def get_reviews(self, obj):
+        reviews = obj.review_set.all()
+        serializer = ReviewSerializers(reviews, many=True)
+        return serializer.data
 
 
 class ShippingAddressSerializers(serializers.ModelSerializer):
