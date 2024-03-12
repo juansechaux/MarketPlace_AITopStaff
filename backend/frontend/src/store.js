@@ -1,7 +1,7 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux'
 import { thunk } from 'redux-thunk'
 import { composeWithDevTools } from 'redux-devtools-extension'
-import { productListReducers, productDetailsReducers } from './reducers/productReducers'
+import { productListReducers, productDetailsReducers, productReviewCreateReducers } from './reducers/productReducers'
 import { cartReducer } from './reducers/cartReducers'
 import { userLoginReducers, userRegisterReducers, userDetailsReducers, userUpdateProfileReducers } from './reducers/userReducer'
 import { orderCreateReducer, orderDetailsReducer, orderPayReducer, orderListMyReducer } from './reducers/orderReducers'
@@ -9,6 +9,8 @@ import { orderCreateReducer, orderDetailsReducer, orderPayReducer, orderListMyRe
 const reducer = combineReducers({
     productList: productListReducers,
     productDetails: productDetailsReducers,
+    productReviewCreate: productReviewCreateReducers,
+
     cart: cartReducer,
     userLogin: userLoginReducers,
     userRegister: userRegisterReducers,
@@ -18,6 +20,7 @@ const reducer = combineReducers({
     orderDetails: orderDetailsReducer,
     orderPay: orderPayReducer,
     orderListMy: orderListMyReducer,
+
 })
 
 const cartItemsFromStorage = localStorage.getItem('cartItems') ?
@@ -39,8 +42,15 @@ const initialState = {
 
 const middleware = [thunk];
 
-const store = createStore(reducer, initialState,
-    composeWithDevTools(applyMiddleware(...middleware)))
+
+const store = createStore(
+    reducer, // Tu root reducer
+    initialState,
+    applyMiddleware(...middleware)
+  );
+
+// const store = createStore(reducer, initialState,
+//     composeWithDevTools(applyMiddleware(...middleware)))
 
 
 export default store
