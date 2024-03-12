@@ -1,15 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import './FloatingButton.js';
 import { useLocation } from 'react-router-dom';
 
 function FloatingButton() {
-  const [isInBody, setIsInBody] = useState(true);
+  const [isInFooter, setIsInFooter] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsInBody(window.scrollY === 0);
+      const windowHeight = window.innerHeight;
+      const totalHeight = document.body.scrollHeight;
+      const scrollPosition = window.scrollY;
+      const offset = 100; // Puedes ajustar este valor según sea necesario
+
+      setIsInFooter(scrollPosition > totalHeight - windowHeight - offset);
     };
 
     window.addEventListener('scroll', handleScroll);
@@ -23,7 +27,7 @@ function FloatingButton() {
     <div className="position-fixed bottom-0 end-0 p-3">
       <Link
         to="https://aitopstaff.com/#015c4ce0-dab8-40a3-9254-45202d08a534"
-        className={`btn rounded-pill ${isInBody ? 'btn-dark text-white': 'btn-light text-dark'}`}
+        className={`btn rounded-pill ${isInFooter ? 'btn-light text-primary' : 'btn-primary text-white'}`}
       >
         Create your AITopStaff
       </Link>
