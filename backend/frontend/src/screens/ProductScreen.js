@@ -162,8 +162,9 @@ function ProductScreen({ match }) {
 
                 <Row>
                     <Col md={6}>
-                        <h4>Reviews</h4>
-                        {product.reviews.length === 0 && <Message variant='info'>No Reviews</Message>}
+                        <h4 style={{ marginTop: '20px', marginLeft: '20px' }}>Reviews</h4>
+                        <div style={{ marginLeft: '20px' }}>
+                        {product.reviews.length === 0 && <Message variant='info' >No Reviews</Message>}
 
                         <ListGroup variant='flush'>
                             {product.reviews.map((review) => (
@@ -176,7 +177,7 @@ function ProductScreen({ match }) {
                             ))}
 
                             <ListGroup.Item>
-                                <h4>Write a Review</h4>
+                                <h5>Write a Review</h5>
 
                                 {loadingProductReview && <Loader />}
                                 {successProductReview && <Message variant='success'>Review submitted</Message>}
@@ -225,6 +226,7 @@ function ProductScreen({ match }) {
                                 )}
                             </ListGroup.Item>
                         </ListGroup>
+                        </div>
                     </Col>
                 </Row>
                 </div>
