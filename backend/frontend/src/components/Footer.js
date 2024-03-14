@@ -15,12 +15,12 @@ function Footer() {
           <Col className='text-center py-3'>
             <h5 className="text-white">Contact Us</h5>
             If you have any query, please contact us{' '}
-            <a href="mailto:andres@ai-twin.io" className="text-warning underline">andres@ai-twin.io</a>
+            <a href="mailto:andres@lidarit.com" className="text-warning underline">andres@lidarit.com</a>
           </Col>
           <Col className='text-center py-3'>
             <div>
               <p>Florida, USA<br></br>
-              +1 407 946 1398</p>
+              +1 407 632 2622</p>
             </div>
           </Col>
         </Row>
