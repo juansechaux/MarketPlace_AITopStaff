@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 from pathlib import Path
-
+import environ
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 import os
@@ -20,13 +20,17 @@ import os
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-2czdd)s)4xwa@%odb(!i&adi+_sg1xe$_c71q9%9b_x^fuh@d7'
+# SECRET_KEY = 'django-insecure-2czdd)s)4xwa@%odb(!i&adi+_sg1xe$_c71q9%9b_x^fuh@d7'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'marketplace.aitopstaff.com', '3.89.42.244']
+env = environ.Env(
+    DEBUG = (bool, False)
+)
+environ.Env.read_env()
+SECRET_KEY = env('SECRET_KEY')
 
 # Application definition
 
@@ -129,13 +133,22 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': env('POSTGRESQL_NAME'),
+        'USER': env('POSTGRESQL_USER'),
+        'PASSWORD': env('POSTGRESQL_PASS'),
+        'HOST': env('POSTGRESQL_HOST'),
+        'PORT': env('POSTGRESQL_PORT'),
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators

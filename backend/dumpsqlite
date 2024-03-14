@@ -1,0 +1,192 @@
+--
+-- Archivo generado con SQLiteStudio v3.4.4 el mar. mar. 12 19:09:55 2024
+--
+-- Codificación de texto usada: UTF-8
+--
+-- PRAGMA foreign_keys = off;
+BEGIN TRANSACTION;
+
+
+INSERT INTO auth_user (
+                          id,
+                          password,
+                          last_login,
+                          is_superuser,
+                          username,
+                          last_name,
+                          email,
+                          is_staff,
+                          is_active,
+                          date_joined,
+                          first_name
+                      )
+                      VALUES (
+                          1,
+                          'pbkdf2_sha256$720000$1F4YoBg06sJEP0lWmWOCMC$7Mq/uHPtUPY7vDF/ubbb1jwfclK8QL3UTccFNppQlLs=',
+                          '2024-03-03 19:58:18.554054',
+                          true,
+                          'admin',
+                          '',
+                          'admin@email.com',
+                          true,
+                          true,
+                          '2024-02-23 00:36:41.433332',
+                          ''
+                      );
+
+INSERT INTO auth_user (
+                          id,
+                          password,
+                          last_login,
+                          is_superuser,
+                          username,
+                          last_name,
+                          email,
+                          is_staff,
+                          is_active,
+                          date_joined,
+                          first_name
+                      )
+                      VALUES (
+                          4,
+                          'pbkdf2_sha256$720000$B3Y4cS1Vq2ydOCSIW5NxAt$UTvxbNZQSrHr7F8ZA0i5a1rYw9+1RmWpoTMMyASF/oQ=',
+                          NULL,
+                          false,
+                          'prueba@email.com',
+                          '',
+                          'prueba@email.com',
+                          false,
+                          true,
+                          '2024-02-29 15:57:30.036129',
+                          'Prueba'
+                      );
+
+INSERT INTO auth_user (
+                          id,
+                          password,
+                          last_login,
+                          is_superuser,
+                          username,
+                          last_name,
+                          email,
+                          is_staff,
+                          is_active,
+                          date_joined,
+                          first_name
+                      )
+                      VALUES (
+                          5,
+                          'pbkdf2_sha256$720000$EgxkV70YbK34XscVmkwQKq$O7Q6GvMfWKgZ4nl6lfH/gT5qEAqPGpkGJSq9Wd34aiA=',
+                          NULL,
+                          false,
+                          'valentina@email.com',
+                          '',
+                          'valentina@email.com',
+                          false,
+                          true,
+                          '2024-02-29 16:16:36.133612',
+                          'Valentina'
+                      );
+
+INSERT INTO auth_user (
+                          id,
+                          password,
+                          last_login,
+                          is_superuser,
+                          username,
+                          last_name,
+                          email,
+                          is_staff,
+                          is_active,
+                          date_joined,
+                          first_name
+                      )
+                      VALUES (
+                          6,
+                          'pbkdf2_sha256$720000$dGVBeWuKktk1CWtipaovqZ$9p2aAjqPmv28HC7zh9djREL5Kc6pK16ySUmmylySi3g=',
+                          NULL,
+                          false,
+                          'johan@email.com',
+                          '',
+                          'johan@email.com',
+                          false,
+                          true,
+                          '2024-03-02 16:21:39.955998',
+                          'Johan'
+                      );
+
+-- Tabla: base_order
+--CREATE TABLE IF NOT EXISTS "base_order" ("paymentMethod" varchar(200) NULL, "taxPrice" decimal NULL, "shippingPrice" decimal NULL, "totalPrice" decimal NULL, "isPaid" bool NOT NULL, "paidAt" datetime NULL, "isDelivered" bool NOT NULL, "deliveredAt" datetime NULL, "createAt" datetime NOT NULL, "_id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "user_id" integer NULL REFERENCES "auth_user" ("id") DEFERRABLE INITIALLY DEFERRED);
+INSERT INTO base_order ("paymentMethod", "taxPrice", "shippingPrice", "totalPrice", "isPaid", "paidAt", "isDelivered", "deliveredAt", "createAt", _id, user_id) VALUES ('PayPal', 164, 0, 2163.99, false, NULL, false, NULL, '2024-03-06 16:15:03.399052', 1, 4);
+INSERT INTO base_order ("paymentMethod", "taxPrice", "shippingPrice", "totalPrice", "isPaid", "paidAt", "isDelivered", "deliveredAt", "createAt", _id, user_id) VALUES ('PayPal', 131.2, 0, 1731.19, false, NULL, false, NULL, '2024-03-06 16:25:54.130858', 2, 4);
+INSERT INTO base_order ("paymentMethod", "taxPrice", "shippingPrice", "totalPrice", "isPaid", "paidAt", "isDelivered", "deliveredAt", "createAt", _id, user_id) VALUES ('PayPal', 98.4, 0, 1298.4, false, NULL, false, NULL, '2024-03-06 16:33:19.279969', 3, 4);
+INSERT INTO base_order ("paymentMethod", "taxPrice", "shippingPrice", "totalPrice", "isPaid", "paidAt", "isDelivered", "deliveredAt", "createAt", _id, user_id) VALUES ('PayPal', 49.2, 0, 649.19, false, NULL, false, NULL, '2024-03-06 19:22:00.079654', 4, 4);
+INSERT INTO base_order ("paymentMethod", "taxPrice", "shippingPrice", "totalPrice", "isPaid", "paidAt", "isDelivered", "deliveredAt", "createAt", _id, user_id) VALUES ('PayPal', 98.32, 0, 1297.32, false, NULL, false, NULL, '2024-03-06 20:59:53.188591', 5, 4);
+INSERT INTO base_order ("paymentMethod", "taxPrice", "shippingPrice", "totalPrice", "isPaid", "paidAt", "isDelivered", "deliveredAt", "createAt", _id, user_id) VALUES ('PayPal', 49.2, 0, 649.19, true, '2024-03-07 01:00:19', false, NULL, '2024-03-06 21:17:14.275454', 6, 4);
+INSERT INTO base_order ("paymentMethod", "taxPrice", "shippingPrice", "totalPrice", "isPaid", "paidAt", "isDelivered", "deliveredAt", "createAt", _id, user_id) VALUES ('PayPal', 82, 0, 1082, false, NULL, false, NULL, '2024-03-07 15:44:36.413973', 7, 4);
+INSERT INTO base_order ("paymentMethod", "taxPrice", "shippingPrice", "totalPrice", "isPaid", "paidAt", "isDelivered", "deliveredAt", "createAt", _id, user_id) VALUES ('PayPal', 82, 0, 1082, false, NULL, false, NULL, '2024-03-07 19:25:08.767298', 8, 4);
+INSERT INTO base_order ("paymentMethod", "taxPrice", "shippingPrice", "totalPrice", "isPaid", "paidAt", "isDelivered", "deliveredAt", "createAt", _id, user_id) VALUES ('PayPal', 82, 0, 1082, false, NULL, false, NULL, '2024-03-08 23:34:13.391686', 9, 4);
+INSERT INTO base_order ("paymentMethod", "taxPrice", "shippingPrice", "totalPrice", "isPaid", "paidAt", "isDelivered", "deliveredAt", "createAt", _id, user_id) VALUES ('PayPal', 82, 0, 1082, true, '2024-03-11 16:39:48.601252', false, NULL, '2024-03-11 16:15:22.767589', 12, 4);
+
+-- Tabla: base_orderitem
+--CREATE TABLE IF NOT EXISTS "base_orderitem" ("name" varchar(200) NULL, "qty" integer NULL, "price" decimal NULL, "image" varchar(200) NULL, "_id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "order_id" integer NULL REFERENCES "base_order" ("_id") DEFERRABLE INITIALLY DEFERRED, "product_id" integer NULL REFERENCES "base_product" ("_id") DEFERRABLE INITIALLY DEFERRED);
+INSERT INTO base_orderitem (name, qty, price, image, _id, order_id, product_id) VALUES ('Gilbert Comercial Profesional', 1, 1000, '/images/image_6.png', 1, 1, 7);
+INSERT INTO base_orderitem (name, qty, price, image, _id, order_id, product_id) VALUES ('Natalia Marketing Expert', 1, 999.99, '/images/WhatsApp_Image_2024-03-04_at_8.20.56_AM_1.jpeg', 2, 1, 3);
+INSERT INTO base_orderitem (name, qty, price, image, _id, order_id, product_id) VALUES ('Angela Assistant', 1, 599.99, '/images/WhatsApp_Image_2024-03-04_at_8.05.25_AM.jpeg', 3, 2, 2);
+INSERT INTO base_orderitem (name, qty, price, image, _id, order_id, product_id) VALUES ('Gilbert Comercial Profesional', 1, 1000, '/images/image_6.png', 4, 2, 7);
+INSERT INTO base_orderitem (name, qty, price, image, _id, order_id, product_id) VALUES ('Alexa Lawyer', 1, 1200, '/images/Bot3.jpeg', 5, 3, 6);
+INSERT INTO base_orderitem (name, qty, price, image, _id, order_id, product_id) VALUES ('Angela Assistant', 1, 599.99, '/images/WhatsApp_Image_2024-03-04_at_8.05.25_AM.jpeg', 6, 4, 2);
+INSERT INTO base_orderitem (name, qty, price, image, _id, order_id, product_id) VALUES ('Antonio Topography Expert', 1, 1199, '/images/Bot2.jpeg', 7, 5, 5);
+INSERT INTO base_orderitem (name, qty, price, image, _id, order_id, product_id) VALUES ('Angela Assistant', 1, 599.99, '/images/WhatsApp_Image_2024-03-04_at_8.05.25_AM.jpeg', 8, 6, 2);
+INSERT INTO base_orderitem (name, qty, price, image, _id, order_id, product_id) VALUES ('Gilbert Comercial Profesional', 1, 1000, '/images/image_6.png', 9, 7, 7);
+INSERT INTO base_orderitem (name, qty, price, image, _id, order_id, product_id) VALUES ('Gilbert Comercial Profesional', 1, 1000, '/images/image_6.png', 10, 8, 7);
+INSERT INTO base_orderitem (name, qty, price, image, _id, order_id, product_id) VALUES ('Gilbert Comercial Profesional', 1, 1000, '/images/image_6.png', 11, 9, 7);
+INSERT INTO base_orderitem (name, qty, price, image, _id, order_id, product_id) VALUES ('Gilbert Comercial Profesional', 1, 1000, '/images/image_6.png', 12, NULL, 7);
+INSERT INTO base_orderitem (name, qty, price, image, _id, order_id, product_id) VALUES ('Gilbert Comercial Profesional', 1, 1000, '/images/image_6.png', 13, NULL, 7);
+INSERT INTO base_orderitem (name, qty, price, image, _id, order_id, product_id) VALUES ('Gilbert Comercial Profesional', 1, 1000, '/images/image_6.png', 14, 12, 7);
+
+-- Tabla: base_product
+--CREATE TABLE IF NOT EXISTS "base_product" ("name" varchar(200) NULL, "short_description" varchar(200) NULL, "category" varchar(200) NULL, "description" text NULL, "rating" decimal NULL, "numReviews" integer NULL, "price" decimal NULL, "countInStock" integer NULL, "createAt" datetime NOT NULL, "_id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "user_id" integer NULL REFERENCES "auth_user" ("id") DEFERRABLE INITIALLY DEFERRED, "image" varchar(100) NULL, "ai_bot_url" varchar(200) NULL);
+INSERT INTO base_product (name, short_description, category, description, rating, "numReviews", price, "countInStock", "createAt", _id, user_id, image, ai_bot_url) VALUES ('Angela Assistant', 'Personalized virtual aide for seamless task management and helpful reminders.', 'Assistant', 'An Assistant bot provides automated support and guidance across various tasks and inquiries, leveraging artificial intelligence to offer efficient assistance, information retrieval, task management, and other functions to users, enhancing productivity and convenience.', 3.2, 8, 599.99, 15, '2024-02-23 19:40:15.319818', 2, 1, 'WhatsApp_Image_2024-03-04_at_8.05.25_AM.jpeg', 'https://bot-demo.aitopstaff.com/uniminuto/2/');
+INSERT INTO base_product (name, short_description, category, description, rating, "numReviews", price, "countInStock", "createAt", _id, user_id, image, ai_bot_url) VALUES ('Natalia Marketing Expert', 'Your strategic ally for data-driven campaigns and dynamic brand engagement.', 'Marketing', 'Utilizes data-driven insights and marketing strategies to automate marketing tasks such as campaign management, audience targeting, content creation, and performance analysis. It offers tailored recommendations and optimizations to help businesses maximize their marketing efforts and achieve their goals efficiently.', 3.85, 7, 999.99, 15, '2024-02-23 19:41:30.657434', 3, 1, 'WhatsApp_Image_2024-03-04_at_8.20.56_AM_1.jpeg', 'https://bot-demo.aitopstaff.com/uniminuto/1/');
+INSERT INTO base_product (name, short_description, category, description, rating, "numReviews", price, "countInStock", "createAt", _id, user_id, image, ai_bot_url) VALUES ('Antonio Topography Expert', 'Your reliable guide for precise land measurements and detailed terrain analysis.', 'Topography', 'Expert in topography offers automated assistance in surveying and mapping tasks, providing accurate data analysis and guidance on geographical features and terrain.', 3.5, 8, 1199, 15, '2024-02-23 19:44:11.711167', 5, 1, 'Bot2.jpeg', 'https://bot-demo.aitopstaff.com/uniminuto/3/');
+INSERT INTO base_product (name, short_description, category, description, rating, "numReviews", price, "countInStock", "createAt", _id, user_id, image, ai_bot_url) VALUES ('Alexa Lawyer', 'Your digital legal advisor, offering quick insights and guidance on legal matters.', 'Law', 'lawyer provides legal advice and representation to clients, assisting them with legal matters and advocating for their interests in various legal proceedings.', 4.2, 9, 1200, 15, '2024-02-23 19:45:07.823122', 6, 1, 'Bot3.jpeg', 'https://bot-demo.aitopstaff.com/uniminuto/1/');
+INSERT INTO base_product (name, short_description, category, description, rating, "numReviews", price, "countInStock", "createAt", _id, user_id, image, ai_bot_url) VALUES ('Gilbert Comercial Profesional', 'Designed to streamline customer interactions and boost sales through automated responses and personalized recommendations.', NULL, 'Professional Salesperson represents a company''s offerings, employing sales strategies to secure deals and foster client relationships, driving revenue growth.', 3, 1, 1000, 15, '2024-03-01 19:43:55.084513', 7, 1, 'image_6.png', 'https://bot-demo.aitopstaff.com/uniminuto/2/');
+
+-- Tabla: base_review
+--CREATE TABLE IF NOT EXISTS "base_review" ("name" varchar(200) NULL, "rating" integer NULL, "comment" text NULL, "_id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "product_id" integer NULL REFERENCES "base_product" ("_id") DEFERRABLE INITIALLY DEFERRED, "user_id" integer NULL REFERENCES "auth_user" ("id") DEFERRABLE INITIALLY DEFERRED, "createAt" datetime NOT NULL);
+INSERT INTO base_review (name, rating, comment, _id, product_id, user_id, "createAt") VALUES ('Prueba', 3, 'very good', 1, 7, 4, '2024-03-11 22:20:29.698207');
+
+-- Tabla: base_shippingaddress
+--CREATE TABLE IF NOT EXISTS "base_shippingaddress" ("address" varchar(200) NULL, "city" varchar(200) NULL, "postalCode" varchar(200) NULL, "country" varchar(200) NULL, "shippingPrice" decimal NULL, "_id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "order_id" integer NULL UNIQUE REFERENCES "base_order" ("_id") DEFERRABLE INITIALLY DEFERRED);
+INSERT INTO base_shippingaddress (address, city, "postalCode", country, "shippingPrice", _id, order_id) VALUES ('aveneu', 'Cali', '88888', 'Colombia', NULL, 1, 1);
+INSERT INTO base_shippingaddress (address, city, "postalCode", country, "shippingPrice", _id, order_id) VALUES ('aveneu', 'Cali', '88888', 'Colombia', NULL, 2, 2);
+INSERT INTO base_shippingaddress (address, city, "postalCode", country, "shippingPrice", _id, order_id) VALUES ('aveneu', 'Cali', '88888', 'Colombia', NULL, 3, 3);
+INSERT INTO base_shippingaddress (address, city, "postalCode", country, "shippingPrice", _id, order_id) VALUES ('aveneu', 'Cali', '88888', 'Colombia', NULL, 4, 4);
+INSERT INTO base_shippingaddress (address, city, "postalCode", country, "shippingPrice", _id, order_id) VALUES ('aveneu', 'Cali', '88888', 'Colombia', NULL, 5, 5);
+INSERT INTO base_shippingaddress (address, city, "postalCode", country, "shippingPrice", _id, order_id) VALUES ('aveneu', 'Cali', '88888', 'Colombia', NULL, 6, 6);
+INSERT INTO base_shippingaddress (address, city, "postalCode", country, "shippingPrice", _id, order_id) VALUES ('aveneu', 'Cali', '88888', 'Colombia', NULL, 7, 7);
+INSERT INTO base_shippingaddress (address, city, "postalCode", country, "shippingPrice", _id, order_id) VALUES ('aveneu', 'Cali', '88888', 'Colombia', NULL, 8, 8);
+INSERT INTO base_shippingaddress (address, city, "postalCode", country, "shippingPrice", _id, order_id) VALUES ('aveneu', 'Cali', '88888', 'Colombia', NULL, 9, 9);
+INSERT INTO base_shippingaddress (address, city, "postalCode", country, "shippingPrice", _id, order_id) VALUES ('aveneu', 'Cali', '88888', 'Colombia', NULL, 12, 12);
+
+-- -- Índice: base_order_user_id_8ad0adec
+-- CREATE INDEX IF NOT EXISTS "base_order_user_id_8ad0adec" ON "base_order" ("user_id");
+
+-- -- Índice: base_orderitem_order_id_aaa7f08a
+-- CREATE INDEX IF NOT EXISTS "base_orderitem_order_id_aaa7f08a" ON "base_orderitem" ("order_id");
+
+-- -- Índice: base_orderitem_product_id_397c77c4
+-- CREATE INDEX IF NOT EXISTS "base_orderitem_product_id_397c77c4" ON "base_orderitem" ("product_id");
+
+-- -- Índice: base_product_user_id_95204f5a
+-- CREATE INDEX IF NOT EXISTS "base_product_user_id_95204f5a" ON "base_product" ("user_id");
+
+-- -- Índice: base_review_product_id_9a95f2eb
+-- CREATE INDEX IF NOT EXISTS "base_review_product_id_9a95f2eb" ON "base_review" ("product_id");
+
+-- -- Índice: base_review_user_id_9a731b84
+-- CREATE INDEX IF NOT EXISTS "base_review_user_id_9a731b84" ON "base_review" ("user_id");
+
+COMMIT TRANSACTION;
+-- PRAGMA foreign_keys = on;
