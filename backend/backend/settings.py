@@ -197,6 +197,7 @@ STATICFILES_DIRS = [
     BASE_DIR / 'frontend/build/static'
 ]
 
-MEDIA_ROOT = 'static/images'
+MEDIA_ROOT = os.path.join(BASE_DIR,  '/static/images/')
+STATIC_ROOT = os.path.join(BASE_DIR, '/staticfiles/')
 
 CORS_ALLOW_ALL_ORIGINS = True
