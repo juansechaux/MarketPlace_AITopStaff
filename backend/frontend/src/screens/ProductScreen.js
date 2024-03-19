@@ -83,15 +83,15 @@ function ProductScreen({ match }) {
                         </iframe>
                     </Col>
 
-                    <Col md={6}>
+                    <Col md={3}>
                         <ListGroup variant='flush'>
                             <ListGroup.Item>
                                 <h3>{product.name}</h3>
                             </ListGroup.Item>
 
-                            {/* <ListGroup.Item>
+                            <ListGroup.Item>
                                 <Rating value={product.rating} text={`${product.numReviews} reviews`} color={'#f8e825'} />
-                            </ListGroup.Item> */}
+                            </ListGroup.Item>
 
                             {/* <ListGroup.Item>
                                 Price: ${product.price}
@@ -104,13 +104,13 @@ function ProductScreen({ match }) {
 
                     </Col>
 
-                    {/* <Col md={3}>
+                    <Col md={3}>
                     <Card>
                         <ListGroup variant='flush'>
                             <ListGroup.Item>
                                 <Row>
                                     <Col>
-                                        Price:
+                                        Price per day:
                                     </Col>
                                     <Col>
                                         <strong>${product.price}</strong>
@@ -132,7 +132,7 @@ function ProductScreen({ match }) {
                             {product.countInStock > 0 && (
                                 <ListGroup.Item>
                                     <Row>
-                                        <Col>Qty</Col>
+                                        <Col>Days</Col>
                                         <Col xs='auto' className='my-1'>
                                             <Form.Control
                                                 as='select'
@@ -157,7 +157,7 @@ function ProductScreen({ match }) {
                             </ListGroup.Item>
                         </ListGroup>
                     </Card>
-                    </Col> */}
+                    </Col>
                 </Row>
 
                 <Row>

@@ -3,7 +3,7 @@ from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated, IsAdminUser
 from rest_framework.response import Response
 
-from base.models import Product, ShippingAddress, Order, OrderItem
+from base.models import Product, Order, OrderItem, Observation
 from base.serializers import ProductSerializers, OrderSerializers
 
 from rest_framework import status
@@ -25,17 +25,23 @@ def addOrderItems(request):
             user=user,
             paymentMethod=data['paymentMethod'],
             taxPrice=data['taxPrice'],
-            shippingPrice=data['shippingPrice'],
+            # shippingPrice=data['shippingPrice'],
             totalPrice=data['totalPrice']
         )
 
-        # (2) create shipping address
-        shipping = ShippingAddress.objects.create(
+        # # (2) create shipping address
+        # shipping = ShippingAddress.objects.create(
+        #     order=order,
+        #     address=data['shippingAddress']['address'],
+        #     city=data['shippingAddress']['city'],
+        #     postalCode=data['shippingAddress']['postalCode'],
+        #     country=data['shippingAddress']['country'],
+        # )
+
+        # (2) create observation
+        observation = Observation.objects.create(
             order=order,
-            address=data['shippingAddress']['address'],
-            city=data['shippingAddress']['city'],
-            postalCode=data['shippingAddress']['postalCode'],
-            country=data['shippingAddress']['country'],
+            modification=data['Observation']['modification'],
         )
 
         # (3) create order items and set order to orderitem relationship

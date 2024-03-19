@@ -69,21 +69,17 @@ function OrderScreen({ match }) {
             <Col md={8}>
                 <ListGroup variant='flush'>
                     <ListGroup.Item>
-                        <h2>Shipping Information</h2>
+                        <h2>Information</h2>
                         <p><strong>Name: </strong> {order.user.name}</p>
                         <p><strong>Email: </strong><a href={`mailto:${order.user.email}`}>{order.user.email}</a></p>
                         <p>
-                            <strong>Shipping: </strong>
-                            {order.shippingAddress.address}, {order.shippingAddress.city}
-                            {'  '}
-                            {order.shippingAddress.postalCode},
-                            {'  '}
-                            {order.shippingAddress.country}
+                            <strong>Observation: </strong>
+                            {order.modification}
                         </p>
                         {order.isDelivered ? (
-                            <Message variant='success'>Delivered On {order.deliveredAt}</Message>
+                            <Message variant='success'>Bot program send{order.deliveredAt}</Message>
                         ) : (
-                            <Message variant='warning'>Not delivered</Message>
+                            <Message variant='warning'>Bot program not send</Message>
                         )}
                     </ListGroup.Item>
 
@@ -144,12 +140,12 @@ function OrderScreen({ match }) {
                         </Row>
                     </ListGroup.Item>
 
-                    <ListGroup.Item>
+                    {/* <ListGroup.Item>
                         <Row>
                            <Col>Shipping:</Col> 
                            <Col>${order.shippingPrice}</Col>
                         </Row>
-                    </ListGroup.Item>
+                    </ListGroup.Item> */}
 
                     <ListGroup.Item>
                         <Row>

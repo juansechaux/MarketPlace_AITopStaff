@@ -19,9 +19,9 @@ function PlaceOrderScreen() {
     const cart = useSelector(state => state.cart)
 
     cart.itemsPrice = cart.cartItems.reduce((acc, item) => acc + item.price * item.qty, 0).toFixed(2)
-    cart.shippingPrice = (cart.itemsPrice > 100 ? 0 : 10).toFixed(2)
+    // cart.shippingPrice = (cart.itemsPrice > 100 ? 0 : 10).toFixed(2)
     cart.taxPrice = Number((0.082) * cart.itemsPrice).toFixed(2)
-    cart.totalPrice = (Number(cart.itemsPrice) + Number(cart.shippingPrice) + Number(cart.taxPrice)).toFixed(2)
+    cart.totalPrice = (Number(cart.itemsPrice) + Number(cart.taxPrice)).toFixed(2)
 
     // case that te user do not select a payment method
     useEffect(() => {
@@ -44,10 +44,11 @@ function PlaceOrderScreen() {
     const placeOrder = () => {
         dispatch(createOrder({
             orderItems: cart.cartItems,
-            shippingAddress: cart.shippingAddress,
+            Observation: cart.Observation,
+            // shippingAddress: cart.shippingAddress,
             paymentMethod: cart.paymentMethod,
             itemsPrice: cart.itemsPrice,
-            shippingPrice: cart.shippingPrice,
+            // shippingPrice: cart.shippingPrice,
             taxPrice: cart.taxPrice,
             totalPrice: cart.totalPrice,
         }))
@@ -59,7 +60,7 @@ function PlaceOrderScreen() {
         <Row>
             <Col md={8}>
                 <ListGroup variant='flush'>
-                    <ListGroup.Item>
+                    {/* <ListGroup.Item>
                         <h2>Shipping Information</h2>
 
                         <p>
@@ -69,6 +70,14 @@ function PlaceOrderScreen() {
                             {cart.shippingAddress.postalCode},
                             {'  '}
                             {cart.shippingAddress.country}
+                        </p>
+                    </ListGroup.Item> */}
+                    <ListGroup.Item>
+                        <h2>Observations</h2>
+
+                        <p>
+                            <strong>Observation: </strong>
+                            {cart.Observation.modification}
                         </p>
                     </ListGroup.Item>
 
@@ -124,12 +133,12 @@ function PlaceOrderScreen() {
                         </Row>
                     </ListGroup.Item>
 
-                    <ListGroup.Item>
+                    {/* <ListGroup.Item>
                         <Row>
                            <Col>Shipping:</Col> 
                            <Col>${cart.shippingPrice}</Col>
                         </Row>
-                    </ListGroup.Item>
+                    </ListGroup.Item> */}
 
                     <ListGroup.Item>
                         <Row>

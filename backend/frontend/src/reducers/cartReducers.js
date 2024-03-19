@@ -4,9 +4,10 @@ import {
     CART_SAVE_SHIPPING_ADDRESS,
     CART_SAVE_PAYMENT_METHOD,
     CART_CLEAR_ITEMS,
+    CART_SAVE_OBSERVATION,
 } from '../constants/cartConstants'
 
-export const cartReducer = (state={cartItems:[], shippingAddress: {}}, action) => {
+export const cartReducer = (state={cartItems:[], shippingAddress: {}, Observation: { modification: '' }}, action) => {
     switch(action.type){
         case CART_ADD_ITEM:
             const item = action.payload
@@ -36,6 +37,12 @@ export const cartReducer = (state={cartItems:[], shippingAddress: {}}, action) =
             return {
                 ...state,
                 shippingAddress: action.payload
+            }
+
+        case CART_SAVE_OBSERVATION:
+            return {
+                ...state,
+                Observation: action.payload
             }
 
         case CART_SAVE_PAYMENT_METHOD:

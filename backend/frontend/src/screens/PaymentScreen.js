@@ -9,16 +9,16 @@ import { savePaymentMethod } from '../actions/cartActions'
 function PaymentScreen() {
   const history = useNavigate();
 
-  const cart = useSelector(state => state.cart)
-  const { shippingAddress } = cart
+  // const cart = useSelector(state => state.cart)
+  // const { shippingAddress } = cart
 
   const dispatch = useDispatch()
 
   const [paymentMethod, setPaymentMethod] = useState('PayPal')
 
-  if (!shippingAddress.address) {
-    history('/shipping')
-  }
+  // if (!shippingAddress.address) {
+  //   history('/shipping')
+  // }
 
   const submitHandler = (e) => {
     e.preventDefault()

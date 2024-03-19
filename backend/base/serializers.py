@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from django.contrib.auth.models import User
 from rest_framework_simplejwt.tokens import RefreshToken
-from .models import Product, Order, OrderItem, ShippingAddress, Review
+from .models import Product, Order, OrderItem, Review, Observation
 
 class UserSerializers(serializers.ModelSerializer):
     name = serializers.SerializerMethodField(read_only=True)
@@ -56,9 +56,14 @@ class ProductSerializers(serializers.ModelSerializer):
         return serializer.data
 
 
-class ShippingAddressSerializers(serializers.ModelSerializer):
+# class ShippingAddressSerializers(serializers.ModelSerializer):
+#     class Meta:
+#         model = ShippingAddress
+#         fields = '__all__'
+
+class ObservationSerializers(serializers.ModelSerializer):
     class Meta:
-        model = ShippingAddress
+        model = Observation
         fields = '__all__'
 
 class OrderItemSerializers(serializers.ModelSerializer):
@@ -68,7 +73,8 @@ class OrderItemSerializers(serializers.ModelSerializer):
 
 class OrderSerializers(serializers.ModelSerializer):
     orderItems = serializers.SerializerMethodField(read_only=True)
-    shippingAddress = serializers.SerializerMethodField(read_only=True)
+    # shippingAddress = serializers.SerializerMethodField(read_only=True)
+    observation = serializers.SerializerMethodField(read_only=True)
     user = serializers.SerializerMethodField(read_only=True)
     class Meta:
         model = Order
@@ -79,12 +85,19 @@ class OrderSerializers(serializers.ModelSerializer):
         serializer = OrderItemSerializers(items, many=True)
         return serializer.data
     
-    def get_shippingAddress(self, obj):
+    # def get_shippingAddress(self, obj):
+    #     try:
+    #         address = ShippingAddressSerializers(obj.shippingaddress, many=False).data
+    #     except:
+    #         address = False
+    #     return address
+    
+    def get_observation(self, obj):
         try:
-            address = ShippingAddressSerializers(obj.shippingaddress, many=False).data
+            haveObservation = ObservationSerializers(obj.observation, many=False).data
         except:
-            address = False
-        return address
+            haveObservation = 'none'
+        return haveObservation
     
     def get_user(self, obj):
         user = obj.user

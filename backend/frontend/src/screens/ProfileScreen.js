@@ -144,7 +144,7 @@ function ProfileScreen() {
                             <th>Date</th>
                             <th>Total</th>
                             <th>Paid</th>
-                            <th>Delivered</th>
+                            <th>Bot program send</th>
                             <th></th>
                         </tr>
                     </thead>
@@ -157,7 +157,9 @@ function ProfileScreen() {
                                 <td>{order.isPaid ? order.paidAt.substring(0, 10) : (
                                     <i className='fas fa-times' style={{color:'red'}}></i>
                                 )}</td>
-                                <td>{order.isDelivered}</td>
+                                <td>{order.isDelivered ? order.deliveredAt.substring(0, 10) : (
+                                    <i className='fas fa-times' style={{color:'red'}}></i>
+                                )}</td>
                                 <td>
                                     <LinkContainer to={`/order/${order._id}`}>
                                         <Button className='btn-sm'>Details</Button>
